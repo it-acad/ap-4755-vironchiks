@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Додати автора</title>
+</head>
+<body>
+    <h2>Створити нового автора</h2>
+
+    <form method="POST" action="{% url 'create_author' %}">
+        {% csrf_token %}
+        
+        <label>Ім'я:</label><br>
+        <input type="text" name="name" required><br><br>
+
+        <label>Прізвище:</label><br>
+        <input type="text" name="surname" required><br><br>
+
+        <label>По батькові:</label><br>
+        <input type="text" name="patronymic" required><br><br>
+
+        <button type="submit">Додати в базу</button>
+    </form>
+    
+    <br>
+    <a href="{% url 'author_list' %}">Повернутися до списку</a>
+</body>
+</html>

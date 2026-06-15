@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Профіль користувача</title>
+</head>
+<body>
+    <h2>Деталі користувача (ID: {{ user.id }})</h2>
+
+    {% if user %}
+        <p><strong>Ім'я:</strong> {{ user.first_name }}</p>
+        <p><strong>Прізвище:</strong> {{ user.last_name }}</p>
+        <p><strong>По батькові:</strong> {{ user.middle_name }}</p>
+        <p><strong>Електронна пошта (Email):</strong> {{ user.email }}</p>
+        <p><strong>Роль у системі:</strong> {{ user.get_role_name }}</p>
+        <p><strong>Статус аккаунту:</strong> {% if user.is_active %}Активний{% else %}Неактивний{% endif %}</p>
+    {% else %}
+        <p style="color: red;">Користувача з таким ID не знайдено.</p>
+    {% endif %}
+
+    <br>
+    <a href="{% url 'user_list' %}">Повернутися до списку користувачів</a>
+</body>
+</html>
